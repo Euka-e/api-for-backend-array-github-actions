@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      pre {
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      a {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #007bff;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Products</h1>
+    <pre id="product-list"></pre>
+    <a href="index.html">Volver al inicio</a>
+    <script>
+      fetch("products.json")
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("product-list").textContent = JSON.stringify(
+            data,
+            null,
+            2
+          );
+        })
+        .catch((error) =>
+          console.error("Error fetching the product list:", error)
+        );
+    </script>
+  </body>
+</html>
